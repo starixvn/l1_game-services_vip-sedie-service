@@ -2,8 +2,8 @@ export default {
     hostingPort: 8503,
     apiSettings: {
         enabledApi: true,
-        apiUrl: "http://api.lumigame.com",
-        authUrl: "http://auth.lumigame.com",
+        apiUrl: "http://l2-api.lumigame.com",
+        authUrl: "http://l2-auth.lumigame.com",
         client: {
             id: "game-server",
             secret: "gameserver@20luminet&",
@@ -14,9 +14,9 @@ export default {
         enabledApiLogs: true,
     },
     mainServerApiSettings: {
-        url: "http://haproxy.lumigame.com:7000/main/api",
+        url: "http://l2-gsr.lumigame.com:8000/api",
         auth: {
-            url: "http://auth.lumigame.com",
+            url: "http://l2-auth.lumigame.com",
             id: "game-services",
             secret: "gameservices@20luminet&",
         },
@@ -32,7 +32,7 @@ export default {
     },
     enabledLogs: true,
     database: {
-        url: "mongodb://lmn_backend:LmnBackend@10.10.50.13:27101/?replicaSet=L1Local",
+        url: "mongodb://lmn_backend:LmnBackend@10.10.50.13:37101/?replicaSet=L2Local",
         options: {
             dbName: "minigame",
             useNewUrlParser: true,
@@ -41,7 +41,7 @@ export default {
         },
     },
     sentry: {
-        sentryUrl: "https://c9800a77cde44628ae983c6dfabfc7d9@sentryuat.sabagame.com/120",
+        sentryUrl: "https://f33bbc8e35c549069439ad2b5fcb372a@sentryuat.sabagame.com/142",
         logIdentifier: "vipsedie",
         env: "LOCAL",
     },
@@ -50,5 +50,5 @@ export default {
     },
     adminSecretKey: "asWDEerfOIdgsdqRTFabvmgh",
     enableCorsWs: true,
-    corsUrls: ["http://localhost:7456", "http://localhost:7000", "http://games.lumigame.com", "http://admin.lumigame.com"],
+    corsUrls: ["http://localhost:7456", "http://l2-games.lumigame.com", "http://l2-admin2.lumigame.com", "http://localhost:7000"],
 };

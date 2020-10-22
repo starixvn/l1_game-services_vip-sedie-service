@@ -2,8 +2,8 @@ export default {
     hostingPort: 6501,
     apiSettings: {
         enabledApi: true,
-        apiUrl: "http://10.2.189.51:6300",
-        authUrl: "http://10.2.189.51:6303",
+        apiUrl: "http://10.99.99.101:6310",
+        authUrl: "http://10.99.99.101:6313",
         client: {
             id: "game-server",
             secret: "gameserver@20luminet&",
@@ -16,7 +16,7 @@ export default {
     mainServerApiSettings: {
         url: "http://10.2.189.51:7777/sit/main/api",
         auth: {
-            url: "http://10.2.189.51:6303",
+            url: "http://10.99.99.101:6313",
             id: "game-services",
             secret: "gameservices@20luminet&",
         },
@@ -32,7 +32,7 @@ export default {
     },
     enabledLogs: true,
     database: {
-        url: "mongodb://lmn_backend:LmnBackend%40517@10.99.99.187:27301/?replicaSet=SabaSIT",
+        url: "mongodb://lmn_backend:LmnBackend%40517@10.99.99.187:37301/?replicaSet=SabaL2SIT",
         options: {
             dbName: "minigame",
             useNewUrlParser: true,
@@ -40,7 +40,7 @@ export default {
         },
     },
     sentry: {
-        sentryUrl: "http://ad4ae5bf7b34446daddaa328b3c59e47@10.99.99.187:800/121",
+        sentryUrl: "http://22c9abcaa7b04f33b9d6c169b4ccbac6@10.99.99.187:803/143",
         logIdentifier: "vipsedie",
         env: "SIT",
     },
@@ -50,11 +50,11 @@ export default {
     adminSecretKey: "asWDEerfOIdgsdqRTFabvmgh",
     enableCorsWs: true,
     corsUrls: [
-        "http://localhost:7456",
-        "http://sit.sabagame.com",
-        "https://sit.sabagame.com",
-        "https://sit-admg.sabagame.com",
-        "http://sit-adm.sabagame.com",
-        "https://sit-adm.sabagame.com",
+        "https://sit.sabagame.net",
+        "http://sit.sabagame.net",
+        "http://sit-admg.sabagame.net",
+        "https://sit-admg.sabagame.net",
+        "http://sit-adm.sabagame.net",
+        "https://sit-adm.sabagame.net",
     ],
 };
