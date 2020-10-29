@@ -1,5 +1,5 @@
 export default {
-    hostingPort: 8503,
+    hostingPort: 9003,
     apiSettings: {
         enabledApi: true,
         apiUrl: "http://l2-api.lumigame.com",
@@ -14,7 +14,7 @@ export default {
         enabledApiLogs: true,
     },
     mainServerApiSettings: {
-        url: "http://l2-gsr.lumigame.com:8000/api",
+        url: "http://haproxy.lumigame.com:7001/main/api",
         auth: {
             url: "http://l2-auth.lumigame.com",
             id: "game-services",
