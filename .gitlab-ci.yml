@@ -1,6 +1,6 @@
 include:
   - project: "ci/luminet/vip-sedie-service-ci"
-    ref: L1
+    ref: L2
     file: "gitlab-ci.yml"
     
     
