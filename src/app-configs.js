@@ -21,7 +21,6 @@ export default {
             secret: "gameservices@20luminet&",
         },
         requestTimeout: 10000,
-        placeBetTimeout: 4500,
         useAuthenticate: true,
     },
     socketOptions: {
