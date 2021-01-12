@@ -1,32 +1,16 @@
-import { Table } from "sc-game-base";
+import { Core, Table } from "sc-game-base";
 
 import appConfigs from "./app-configs";
 import constants from "./constants";
-import { SedieBot, SedieGameCron } from "./crons";
 import gameSettings from "./game-settings";
 import { generateResult, getSettlementResult } from "./helpers/result-helper";
-import { SedieBets, SedieTmpBets } from "./models/sedie-bets";
-import SedieRounds from "./models/sedie-rounds";
-import Startup from "./startup";
-
-export class SedieApp extends Table.TableGameApp {}
+import VipSeDieContainerRegistry from "./vip-sedie-container-registry";
 
 const run = async () => {
+    const definition = new Table.TableGameDefinition(gameSettings, generateResult, getSettlementResult);
     const gameData = new Table.TableGameData(gameSettings.durations.wholeRound, constants.resetTotalBets);
-
-    const definition = new Table.TableGameDefinition(
-        gameSettings,
-        generateResult,
-        getSettlementResult,
-        SedieRounds,
-        SedieBets,
-        SedieTmpBets,
-        null
-    );
-
-    const gameCron = new SedieGameCron(definition, gameData, new SedieBot(definition, gameData));
-    const startup = new Startup(appConfigs, definition, gameData, gameCron);
-    const app = new SedieApp(appConfigs, definition, gameData, startup);
+    const container = new VipSeDieContainerRegistry().register(appConfigs, definition, gameData);
+    const app = new Core.BaseGameApp(container);
 
     await app.run();
 };

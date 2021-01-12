@@ -1,11 +1,19 @@
+import mongoose from "mongoose";
 import { helpers } from "sc-common";
-import { Table } from "sc-game-base";
+import { Core, Table } from "sc-game-base";
 
 import constants from "../constants";
 
-export default class SedieBot extends Table.TableGameBot {
-    constructor(definition, gameData) {
-        super(definition, gameData, null);
+export default class VipSeDieBot extends Table.Crons.TableGameBot {
+    /**
+     * @param {Table.TableGameDefinition} definition
+     * @param {Table.TableGameData} gameData
+     * @param {Core.BaseEventPublishers.BaseEventPublisher} publisher
+     * @param {mongoose.Model} userInfosRepository
+     * @param {mongoose.Model} tempBetRepository
+     */
+    constructor(definition, gameData, publisher, userInfosRepository, tempBetRepository) {
+        super(definition, gameData, publisher, userInfosRepository, tempBetRepository);
 
         this.betChoiceRatio = {
             MainOpts: 90, //odd | even
@@ -127,6 +135,7 @@ export default class SedieBot extends Table.TableGameBot {
 
     getRandomChoiceFromGroup(group) {
         const randomIndex = (Math.random() * group.length) >> 0;
+
         return group[randomIndex];
     }
 
