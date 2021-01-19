@@ -12,9 +12,9 @@ export default class VipSeDieContainerRegistry extends Table.TableContainerRegis
         super.registerModels();
 
         this.container.register({
-            roundRepository: asValue(VipSeDieRounds),
-            betRepository: asValue(VipSeDieBets),
-            tempBetRepository: asValue(VipSeDieTmpBets),
+            roundsRepository: asValue(VipSeDieRounds),
+            betsRepository: asValue(VipSeDieBets),
+            tempBetsRepository: asValue(VipSeDieTmpBets),
         });
     }
 
