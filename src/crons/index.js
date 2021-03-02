@@ -1,4 +1,4 @@
-import SedieBot from "./sedie-bot";
-import SedieGameCron from "./sedie-game-cron";
+import VipSeDieBot from "./vip-sedie-bot";
+import VipSeDieGameCron from "./vip-sedie-game-cron";
 
-export { SedieBot, SedieGameCron };
+export { VipSeDieBot, VipSeDieGameCron };

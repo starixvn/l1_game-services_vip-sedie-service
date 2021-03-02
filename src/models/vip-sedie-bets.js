@@ -26,4 +26,4 @@ const schema = new mongoose.Schema({
 const bets = mongoose.model("VipSeDie_cuoc", schema);
 const tmpBets = mongoose.model("VipSeDie_tmpcuoc", schema);
 
-export { bets as SedieBets, tmpBets as SedieTmpBets };
+export { bets as VipSeDieBets, tmpBets as VipSeDieTmpBets };

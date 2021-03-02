@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
-import { middlewares } from "sc-common";
+import { VipSeDieBets, VipSeDieTmpBets } from "./vip-sedie-bets";
+import VipSeDieRounds from "./vip-sedie-rounds";
 
-export default (config) => middlewares.database.configureDatabase(mongoose, config);
+export { VipSeDieBets, VipSeDieTmpBets, VipSeDieRounds };
