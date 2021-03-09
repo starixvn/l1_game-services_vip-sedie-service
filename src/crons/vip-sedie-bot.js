@@ -11,9 +11,11 @@ export default class VipSeDieBot extends Table.Crons.TableGameBot {
      * @param {Core.BaseEventPublishers.BaseEventPublisher} publisher
      * @param {mongoose.Model} userInfosRepository
      * @param {mongoose.Model} tempBetsRepository
+     * @param {BetPatternConsumer} betPatternConsumer
+     * @param {mongoose.Model} smartBotBetLogsRepository
      */
-    constructor(definition, gameData, publisher, userInfosRepository, tempBetsRepository) {
-        super(definition, gameData, publisher, userInfosRepository, tempBetsRepository);
+    constructor(definition, gameData, publisher, userInfosRepository, tempBetsRepository, betPatternConsumer, smartBotBetLogsRepository) {
+        super(definition, gameData, publisher, userInfosRepository, tempBetsRepository, betPatternConsumer, smartBotBetLogsRepository);
 
         this.betChoiceRatio = {
             MainOpts: 90, //odd | even

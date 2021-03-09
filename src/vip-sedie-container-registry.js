@@ -3,7 +3,14 @@ import { Table } from "sc-game-base";
 
 import PlaceBetConsumer from "./consumers/vip-sedie-place-bet-consumer";
 import { VipSeDieBot, VipSeDieGameCron } from "./crons";
-import { VipSeDieBets, VipSeDieRounds, VipSeDieTmpBets } from "./models";
+import {
+    VipSeDieBets,
+    VipSeDieRounds,
+    VipSeDieSmartBotBetActions,
+    VipSeDieSmartBotBetLogs,
+    VipSeDieSmartBotPatterns,
+    VipSeDieTmpBets,
+} from "./models";
 
 const { asClass, asValue } = awilix;
 
@@ -15,6 +22,9 @@ export default class VipSeDieContainerRegistry extends Table.TableContainerRegis
             roundsRepository: asValue(VipSeDieRounds),
             betsRepository: asValue(VipSeDieBets),
             tempBetsRepository: asValue(VipSeDieTmpBets),
+            betPatternRepository: asValue(VipSeDieSmartBotPatterns),
+            betActionRepository: asValue(VipSeDieSmartBotBetActions),
+            smartBotBetLogsRepository: asValue(VipSeDieSmartBotBetLogs),
         });
     }
 
