@@ -1,5 +1,6 @@
 import awilix from "awilix";
 import { Table } from "sc-game-base";
+import { SmartBotContainerRegistry } from "sc-smart-bot";
 
 import PlaceBetConsumer from "./consumers/vip-sedie-place-bet-consumer";
 import { VipSeDieBot, VipSeDieGameCron } from "./crons";
@@ -26,6 +27,8 @@ export default class VipSeDieContainerRegistry extends Table.TableContainerRegis
             betActionRepository: asValue(VipSeDieSmartBotBetActions),
             smartBotBetLogsRepository: asValue(VipSeDieSmartBotBetLogs),
         });
+
+        this.container.register(new SmartBotContainerRegistry().register());
     }
 
     registerConsumers() {

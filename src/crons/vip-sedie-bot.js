@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { helpers } from "sc-common";
 import { Core, Table } from "sc-game-base";
+import { Bots } from "sc-smart-bot";
 
 import constants from "../constants";
 
@@ -11,11 +12,11 @@ export default class VipSeDieBot extends Table.Crons.TableGameBot {
      * @param {Core.BaseEventPublishers.BaseEventPublisher} publisher
      * @param {mongoose.Model} userInfosRepository
      * @param {mongoose.Model} tempBetsRepository
-     * @param {BetPatternConsumer} betPatternConsumer
-     * @param {mongoose.Model} smartBotBetLogsRepository
+     * @param {Bots.TableGameSmartBot} tableGameSmartBot
      */
-    constructor(definition, gameData, publisher, userInfosRepository, tempBetsRepository, betPatternConsumer, smartBotBetLogsRepository) {
-        super(definition, gameData, publisher, userInfosRepository, tempBetsRepository, betPatternConsumer, smartBotBetLogsRepository);
+    constructor(definition, gameData, publisher, userInfosRepository, tempBetsRepository, tableGameSmartBot) {
+        super(definition, gameData, publisher, userInfosRepository, tempBetsRepository);
+        this.tableGameSmartBot = tableGameSmartBot;
 
         this.betChoiceRatio = {
             MainOpts: 90, //odd | even
@@ -32,6 +33,71 @@ export default class VipSeDieBot extends Table.Crons.TableGameBot {
         this.smallTicketRatio = 70;
         this.smallTickets = 0;
         this.resetAllBets();
+    }
+
+    async reset() {
+        await super.reset();
+        await this.resetSmartBots();
+    }
+
+    async resetSmartBots() {
+        const { smartBotEnabled, choices_maxbet: maxBetOfChoices, name, smartBotGroupRatio } = this.gameData.gameConfigs;
+        if (smartBotEnabled) {
+            this.tableGameSmartBot.setAfterPlacingBet(this.smartBotAfterPlacingBet);
+            this.tableGameSmartBot.setBeforeRemovingAll(this.removeAllSmartBots);
+
+            const { isExpired, smartBots } = await this.tableGameSmartBot.reset(
+                { smartBotEnabled, maxBetOfChoices, smartBotGroupRatio, wholeRound: this.definition.durations.wholeRound },
+                {
+                    userResetFilters: { inRoom: true, inGameRoom: name },
+                    userUpdateFilters: { inRoom: false, inGameRoom: "", disabled: false },
+                    userUpdates: { inGameRoom: name, inRoom: true },
+                    userProjections: { id: true, name: true, red: true, avatarId: true },
+                }
+            );
+
+            if (isExpired && smartBots?.length > 0) {
+                smartBots.forEach((smartBot) => {
+                    this.addToPlayersAndPublish(smartBot);
+                });
+
+                this.maxNumberOfBots -= smartBots.length;
+            }
+        }
+    }
+
+    addToPlayersAndPublish(bot) {
+        this.gameData.players[bot.id] = bot;
+        const payload = {
+            player: {
+                id: bot.id,
+                name: bot.name,
+                red: bot.red,
+                avatarId: bot.avatarId,
+                type: bot.patternId > 0 ? false : true,
+            },
+        };
+
+        this.publisher.publishToAllUsers(payload);
+    }
+
+    async resetInRoomTrackings() {
+        await this.userInfosRepository.updateMany(
+            { type: true, inGameRoom: this.definition.configName, patternId: 0 },
+            { inRoom: false, inGameRoom: "" }
+        );
+    }
+
+    async removeAllSmartBots(smartBots) {
+        await Promise.all(
+            smartBots.map(async (bot) => {
+                await this.userInfosRepository.updateOne({ id: bot.id }, { inRoom: false, inGameRoom: "", patternId: 0 });
+
+                this.publisher.publishToAllUsers({ outgame: { playerId: bot.id } });
+
+                delete this.gameData.players[bot.id];
+            })
+        );
     }
 
     resetAllBotData() {
@@ -51,6 +117,14 @@ export default class VipSeDieBot extends Table.Crons.TableGameBot {
         };
 
         this.smallTickets = 0;
+    }
+
+    async run() {
+        await super.run();
+
+        if (this.gameData.gameConfigs?.smartBotEnabled && this.gameData.remainingTime > this.definition.durations.lockingBet) {
+            await this.tableGameSmartBot.run(this.gameData.roundId, this.gameData.remainingTime);
+        }
     }
 
     getBetChoice(bot) {
@@ -181,5 +255,17 @@ export default class VipSeDieBot extends Table.Crons.TableGameBot {
 
     getTotalBetAmount(currentBet) {
         return currentBet ? this.definition.choices.reduce((total, choice) => total + currentBet[choice], 0) : 0;
+    }
+
+    smartBotAfterPlacingBet(bot, balance, choice, amount) {
+        if (this.gameData.players[bot.id]) {
+            this.gameData.players[bot.id].red = balance;
+        }
+
+        const payload = {
+            playerChip: { playerId: bot.id, betChoice: choice, amount, red: balance },
+        };
+
+        this.publisher.publishToAllUsers(payload);
     }
 }
