@@ -639,20 +639,12 @@
   resolved "http://npm.lumigame.com/@types%2fminimist/-/minimist-1.2.1.tgz#283f669ff76d7b8260df8ab7a4262cc83d988256"
   integrity sha512-fZQQafSREFyuZcdWFAExYjBiCL7AUCdgsk80iO0q4yihYYdcIiH28CcuPTGFgLOCC8RlW49GSQxdHwZP+I7CNg==
 
-"@types/mongodb@*", "@types/mongodb@^3.5.27":
+"@types/mongodb@^3.5.27":
   version "3.6.7"
   resolved "http://npm.lumigame.com/@types%2fmongodb/-/mongodb-3.6.7.tgz#b15300254083bc4c6b09036ccaaa75d2f9c6e35c"
   integrity sha512-47P64kbkXarlleSMzSrRG04uzY+Dr3xAilOiqRIsqj/sZrmq6cUMx8njydY/iWMqi8IdE9ojFQl/X3ou9EsAlQ==
   dependencies:
     "@types/bson" "*"
-    "@types/node" "*"
-
-"@types/mongoose@^4.0.0 || ^5.0.0":
-  version "5.10.3"
-  resolved "http://npm.lumigame.com/@types%2fmongoose/-/mongoose-5.10.3.tgz#3bc6787245aa8ebbff4ed61da18f4775e0ec52cd"
-  integrity sha512-VfdnaFImXEJZZiuL2ID/ysZs4inOIjxwrAnUgkr5eum2O2BLhFkiSI0i87AwignVva1qWTJ3H3DyM0Rf4USJ4A==
-  dependencies:
-    "@types/mongodb" "*"
     "@types/node" "*"
 
 "@types/node@*":
@@ -1816,7 +1808,7 @@ debug@4, debug@^4.0.0, debug@^4.1.0:
   dependencies:
     ms "2.1.2"
 
-debug@^3.0.0, debug@^3.1.0, debug@^3.2.6:
+debug@^3.1.0, debug@^3.2.6:
   version "3.2.7"
   resolved "http://npm.lumigame.com/debug/-/debug-3.2.7.tgz#72580b7e9145fb39b6676f9c5e5fb100b934179a"
   integrity sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==
@@ -4335,16 +4327,6 @@ mongodb@3.6.4:
   optionalDependencies:
     saslprep "^1.0.0"
 
-mongoose-auto-increment-reworked@^1.2.1:
-  version "1.2.1"
-  resolved "http://npm.lumigame.com/mongoose-auto-increment-reworked/-/mongoose-auto-increment-reworked-1.2.1.tgz#9cd92b2de87bd6209bdf582a814ea7dff849bfef"
-  integrity sha512-5ID9oUFsBc5dh+Lv0GSHtcHik9rM0Jw+kl9l0r1WqgFodaii90O9e89YfViwK8aAIZjF2mFQ5CxRshsijvdQYQ==
-  dependencies:
-    "@types/mongoose" "^4.0.0 || ^5.0.0"
-    debug "^3.0.0"
-    tslib "^1.0.0"
-    typescript-lazy-get-decorator "^1.0.0"
-
 mongoose-legacy-pluralize@1.0.2:
   version "1.0.2"
   resolved "http://npm.lumigame.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
@@ -5907,37 +5889,36 @@ saslprep@^1.0.0:
   dependencies:
     sparse-bitfield "^3.0.3"
 
-sc-api-client@^1.2.0:
-  version "1.2.0"
-  resolved "http://npm.lumigame.com/sc-api-client/-/sc-api-client-1.2.0.tgz#132f323f8d788ebee5b5bac0bd1e601b62e6107b"
-  integrity sha512-aOL9fIrL6or1E0FIHH2gYC10x1iKJcsKywoPZrmrSzLvvNzb4vbk9sLTvUgD7gvtVtaGYwlO8gDiKE5hDTFQ9A==
+sc-api-client@^1.3.0:
+  version "1.3.0"
+  resolved "http://npm.lumigame.com/sc-api-client/-/sc-api-client-1.3.0.tgz#15f8b181759afde726b14b0584d61b3e181828a2"
+  integrity sha512-NGqD7cpCxZ1RKuqIKQEyexh7bLgg9HJuPGHFE1AACpgH/gvKWnam91N1u5d7sJOrKDXSmg/vGRK1QhcpPRgW8w==
   dependencies:
     axios "^0.19.2"
     openid-client "^3.15.9"
 
-sc-base-apis@^1.9.0:
-  version "1.9.0"
-  resolved "http://npm.lumigame.com/sc-base-apis/-/sc-base-apis-1.9.0.tgz#ee0c91b9a968140d0f5dc72ba99616457ca11ccc"
-  integrity sha512-TtueTnu0/qLfYPZwkb1qFjWF2SOOAEu2fh3eU/rYNebH/cb7HyNCfEWy5xSwdS32KjKGceKnnhlFW9JOZyqwZA==
+sc-base-apis@^1.11.0:
+  version "1.11.0"
+  resolved "http://npm.lumigame.com/sc-base-apis/-/sc-base-apis-1.11.0.tgz#ff071e2b2e0172483c229734f51eacd41c36f52d"
+  integrity sha512-UMGiBrBte2WWixbFHuxL+6DRdmmCgQ6c1451qHN1SQRKSFBtX4+7+Fh/iT9SFsQy7ywaDaLjYxDvNS6mx2fAWg==
   dependencies:
     moment "^2.27.0"
-    sc-api-client "^1.2.0"
-    sc-base-database "^1.6.0"
-    sc-common "^1.5.0"
+    sc-api-client "^1.3.0"
+    sc-base-database "^1.8.0"
+    sc-common "^1.5.1"
 
-sc-base-database@^1.6.0:
-  version "1.6.0"
-  resolved "http://npm.lumigame.com/sc-base-database/-/sc-base-database-1.6.0.tgz#0ac4342fc123ccb472a2d5e984fdc970ccb81dc0"
-  integrity sha512-b04AV4wPv2sGRVbG5JSgRljesg/akO612daxY2rjWCVbKDXTbkmccEWNASW3FjFx2cLL02W/pr5O9z5ao1yK+g==
+sc-base-database@^1.8.0:
+  version "1.8.0"
+  resolved "http://npm.lumigame.com/sc-base-database/-/sc-base-database-1.8.0.tgz#54e59bfbf4222e9b90e058947230a383291ae50b"
+  integrity sha512-naKp92rZW+IhVoz6QWmyZmyZy8IYb6yysEQOmYcwIDPWevJBprjKeWiu7BCWGPRCqNHj+VcdOBQ0yR00QUQ9EQ==
   dependencies:
     mongoose "^5.9.25"
-    mongoose-auto-increment-reworked "^1.2.1"
-    sc-common "^1.5.0"
+    sc-common "^1.5.1"
 
-sc-common@^1.5.0:
-  version "1.5.0"
-  resolved "http://npm.lumigame.com/sc-common/-/sc-common-1.5.0.tgz#ce549fd6df4940cc585e4a479a8e93a4da7d85a9"
-  integrity sha512-mzGs4nCd3uww+aVmRdyCA1f42NrSF6dsrHDEU/aJvMl7mR6j0rCcgh03hGY3yhCKFprTcfgwbgqPulDj2d3tQw==
+sc-common@^1.5.1:
+  version "1.5.1"
+  resolved "http://npm.lumigame.com/sc-common/-/sc-common-1.5.1.tgz#e43d050231b13cdf5deb3c5c1584e1359172c124"
+  integrity sha512-3jBzGXJKxvpbdtAFnLSEQo1jFB1V87GFDdU8RxgnhpYKDBq6KF+Tv/pbEQIZ/JqU2sho/T+A1yOyNS8O0gPUcA==
   dependencies:
     "@sentry/node" "^5.19.1"
     jsonwebtoken "^8.5.1"
@@ -5945,10 +5926,10 @@ sc-common@^1.5.0:
     mongoose-long "^0.3.0"
     numeral "^2.0.6"
 
-sc-game-base@^1.18.0:
-  version "1.18.0"
-  resolved "http://npm.lumigame.com/sc-game-base/-/sc-game-base-1.18.0.tgz#6aaa8da912372a4d17854499e706560a9998e1ed"
-  integrity sha512-jIJZqVJclaaxCCH3NFfdMReG77pVR/hv6Ai8yeUhR1S/YtpJohmDYvJ6XS6ReKpmo2yGyhjOp/xbqDxmyglCQw==
+sc-game-base@1.20.0:
+  version "1.20.0"
+  resolved "http://npm.lumigame.com/sc-game-base/-/sc-game-base-1.20.0.tgz#87ec789715d8d219c9fcb7870327ac31c16ebc59"
+  integrity sha512-WJ5gJjoyFoeHouVPTlkRJKEvR0NuHUOVZq00eX+XhX/A2LvOJqFOXdHYnr21AyFM4ZVfI3lD65a1db9VSiP0Qg==
   dependencies:
     awilix "^4.3.1"
     axios "^0.20.0"
@@ -5961,9 +5942,9 @@ sc-game-base@^1.18.0:
     mongoose "^5.9.25"
     morgan "^1.10.0"
     openid-client "^4.2.0"
-    sc-base-apis "^1.9.0"
-    sc-base-database "^1.6.0"
-    sc-common "^1.5.0"
+    sc-base-apis "^1.11.0"
+    sc-base-database "^1.8.0"
+    sc-common "^1.5.1"
     socket.io "^2.3.0"
 
 sc-semantic-release@^1.1.0:
@@ -6661,7 +6642,7 @@ trim-off-newlines@^1.0.0:
   resolved "http://npm.lumigame.com/trim-off-newlines/-/trim-off-newlines-1.0.1.tgz#9f9ba9d9efa8764c387698bcbfeb2c848f11adb3"
   integrity sha1-n5up2e+odkw4dpi8v+sshI8RrbM=
 
-tslib@^1.0.0, tslib@^1.9.3:
+tslib@^1.9.3:
   version "1.14.1"
   resolved "http://npm.lumigame.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
@@ -6732,11 +6713,6 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "http://npm.lumigame.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
-
-typescript-lazy-get-decorator@^1.0.0:
-  version "1.2.2"
-  resolved "http://npm.lumigame.com/typescript-lazy-get-decorator/-/typescript-lazy-get-decorator-1.2.2.tgz#f7ffe9f9225b830f851f2701376409cfd640100e"
-  integrity sha512-XNqWMl2qI2AgQqVoUa7+TJa3J6XUKYOS9kK6HvptL6+uY3r2wjnpFjykA2Y7h5w9TkTV5DY4v5leTOavBEbKcQ==
 
 uglify-js@^3.1.4:
   version "3.12.8"
