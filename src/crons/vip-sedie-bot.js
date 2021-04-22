@@ -45,6 +45,7 @@ export default class VipSeDieBot extends Table.Crons.TableGameBot {
         if (smartBotEnabled) {
             this.tableGameSmartBot.setAfterPlacingBet(this.smartBotAfterPlacingBet);
             this.tableGameSmartBot.setBeforeRemovingAll(this.removeAllSmartBots);
+            this.tableGameSmartBot.setInsertUpdateBet(this.insertOrUpdateBetForSmartBot);
 
             const { isExpired, smartBots } = await this.tableGameSmartBot.reset(
                 { smartBotEnabled, maxBetOfChoices, smartBotGroupRatio, wholeRound: this.definition.durations.wholeRound },
@@ -274,5 +275,23 @@ export default class VipSeDieBot extends Table.Crons.TableGameBot {
         };
 
         this.publisher.publishToAllUsers(payload);
+    }
+
+    async insertOrUpdateBetForSmartBot(bot, choice, amount) {
+        const currentBet = await this.tempBetsRepository.findOne({ uid: bot.id, phien: this.gameData.roundId }).lean().exec();
+        const currentAmount = currentBet ? currentBet[choice] : 0;
+        const update = { [choice]: amount + currentAmount };
+        const create = {
+            uid: bot.id,
+            name: bot.name,
+            phien: this.gameData.roundId,
+            time: new Date(),
+        };
+
+        await this.tempBetsRepository.updateOne(
+            { uid: bot.id, phien: this.gameData.roundId },
+            { $set: update, $setOnInsert: create },
+            { upsert: true, setDefaultsOnInsert: true }
+        );
     }
 }
