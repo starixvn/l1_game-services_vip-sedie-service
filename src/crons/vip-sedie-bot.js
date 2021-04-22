@@ -262,6 +262,13 @@ export default class VipSeDieBot extends Table.Crons.TableGameBot {
             this.gameData.players[bot.id].red = balance;
         }
 
+        this.gameData.totalBets[choice] = this.gameData.totalBets[choice] ? this.gameData.totalBets[choice] + amount : amount;
+
+        if (this.gameData.chips) {
+            this.gameData.chips[choice] = this.gameData.chips[choice] ?? {};
+            this.gameData.chips[choice][amount] = (this.gameData.chips[choice][amount] ?? 0) + 1;
+        }
+
         const payload = {
             playerChip: { playerId: bot.id, betChoice: choice, amount, red: balance },
         };
