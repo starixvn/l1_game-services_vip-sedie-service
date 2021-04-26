@@ -41,7 +41,7 @@ export default {
         },
     },
     sentry: {
-        sentryUrl: "https://f33bbc8e35c549069439ad2b5fcb372a@sentryuat.sabagame.com/142",
+        sentryUrl: "https://acb36eb835d948d68c1aad9873754d51@sentry.lumigame.com/27",
         logIdentifier: "vipsedie",
         env: "LOCAL_1",
     },
