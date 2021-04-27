@@ -38,6 +38,7 @@ export default {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             auto_reconnect: true,
+            perMessageDeflate: false,
         },
     },
     sentry: {
