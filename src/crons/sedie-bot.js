@@ -3,9 +3,9 @@ import { Table } from "sc-game-base";
 
 import constants from "../constants";
 
-export default class SedieBot extends Table.TableGameBot {
-    constructor(definition, gameData) {
-        super(definition, gameData, null);
+export default class SedieBot extends Table.Crons.TableGameBot {
+    constructor(definition, gameData, publisher, userInfosRepository, tempBetsRepository) {
+        super(definition, gameData, publisher, userInfosRepository, tempBetsRepository);
 
         this.betChoiceRatio = {
             MainOpts: 90, //odd | even

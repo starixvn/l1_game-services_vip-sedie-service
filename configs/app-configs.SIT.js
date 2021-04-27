@@ -1,9 +1,9 @@
 export default {
-    hostingPort: 6501,
+    hostingPort: 5000,
     apiSettings: {
         enabledApi: true,
-        apiUrl: "http://10.2.189.51:6310",
-        authUrl: "http://10.2.189.51:6313",
+        apiUrl: "http://l2_game_api_sit:5000",
+        authUrl: "http://l2_auth_api_sit:5000",
         client: {
             id: "game-server",
             secret: "gameserver@20luminet&",
@@ -14,9 +14,9 @@ export default {
         enabledApiLogs: true,
     },
     mainServerApiSettings: {
-        url: "http://10.2.189.51:7778/sit/main/api",
+        url: "http://l2_game_server_sit:5000/api",
         auth: {
-            url: "http://10.2.189.51:6313",
+            url: "http://l2_auth_api_sit:5000",
             id: "game-services",
             secret: "gameservices@20luminet&",
         },
@@ -40,7 +40,7 @@ export default {
         },
     },
     sentry: {
-        sentryUrl: "http://22c9abcaa7b04f33b9d6c169b4ccbac6@10.99.99.187:803/143",
+        sentryUrl: "http://8ac47fca6d3e4a41908896a64ef201ac@10.99.99.187:800/53",
         logIdentifier: "vipsedie",
         env: "SIT",
     },

@@ -32,7 +32,7 @@ export default {
     },
     enabledLogs: true,
     database: {
-        url: "mongodb://10.5.10.154:27017",
+        url: "mongodb://localhost:27017",
         options: {
             dbName: "minigame",
             useNewUrlParser: true,
