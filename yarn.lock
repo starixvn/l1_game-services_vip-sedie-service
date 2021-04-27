@@ -2186,6 +2186,11 @@
   "resolved" "http://npm.lumigame.com/etag/-/etag-1.8.1.tgz"
   "version" "1.8.1"
 
+"eventemitter3@^4.0.7":
+  "integrity" "sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw=="
+  "resolved" "http://npm.lumigame.com/eventemitter3/-/eventemitter3-4.0.7.tgz"
+  "version" "4.0.7"
+
 "execa@^0.7.0":
   "integrity" "sha1-lEvs00zEHuMqY6n68nrVpl/Fl3c="
   "resolved" "http://npm.lumigame.com/execa/-/execa-0.7.0.tgz"
@@ -5895,10 +5900,10 @@
     "mongoose-long" "^0.3.0"
     "numeral" "^2.0.6"
 
-"sc-game-base@1.20.3-beta.3":
-  "integrity" "sha512-uqHryi3w4YzGyg6VkWsSjBrEgJA8UPxG2tJw5NOunxr64TDpp+ldxIHuZg7lJmAEpq6eoQN9ursY6SSGpgLx8Q=="
-  "resolved" "http://npm.lumigame.com/sc-game-base/-/sc-game-base-1.20.3-beta.3.tgz"
-  "version" "1.20.3-beta.3"
+"sc-game-base@1.20.5-beta.0":
+  "integrity" "sha512-dv+16C/mMUslfmTWQE9k0yf3GqSWcn6dymHAYcM8iZnVUt0l3loc6eOcfI0h+vMrdVwoyEhGe7KHDSGaUcUbPw=="
+  "resolved" "http://npm.lumigame.com/sc-game-base/-/sc-game-base-1.20.5-beta.0.tgz"
+  "version" "1.20.5-beta.0"
   dependencies:
     "awilix" "^4.3.1"
     "axios" "^0.20.0"
@@ -5921,13 +5926,14 @@
   "resolved" "http://npm.lumigame.com/sc-semantic-release/-/sc-semantic-release-1.2.0.tgz"
   "version" "1.2.0"
 
-"sc-smart-bot@1.0.1-beta.10":
-  "integrity" "sha512-4SB0BEBMV10qXSP76voPGOD7zN806Ro+Ury33tesi4SdrcjycRVFU4fjb41jg8FCADaQBUZ8eykeAe3XsIIOQw=="
-  "resolved" "http://npm.lumigame.com/sc-smart-bot/-/sc-smart-bot-1.0.1-beta.10.tgz"
-  "version" "1.0.1-beta.10"
+"sc-smart-bot@1.0.1-beta.14":
+  "integrity" "sha512-7YmsDV5/8yipzCe2UDbKtH6RjVv5XLZEL3zV26c/j+RrK4j/wmsUnuxVStxZ4G6/401tQxzyRu9oMU4LAjo54g=="
+  "resolved" "http://npm.lumigame.com/sc-smart-bot/-/sc-smart-bot-1.0.1-beta.14.tgz"
+  "version" "1.0.1-beta.14"
   dependencies:
     "awilix" "^4.3.1"
     "chance" "^1.1.7"
+    "eventemitter3" "^4.0.7"
     "mongoose" "^5.9.25"
 
 "semantic-release@^17.1.1", "semantic-release@>=15.8.0 <18.0.0", "semantic-release@>=16.0.0 <18.0.0":
