@@ -57,5 +57,7 @@ export default {
         "https://sit-admg.sabagame.net",
         "http://sit-adm.sabagame.net",
         "https://sit-adm.sabagame.net",
+        "http://sitm.sabagame.net",
+        "https://sitm.sabagame.net",
     ],
 };
