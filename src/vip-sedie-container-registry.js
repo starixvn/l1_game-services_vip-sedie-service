@@ -1,10 +1,9 @@
 import awilix from "awilix";
 import { Table } from "sc-game-base";
 
-import PlaceBetConsumer from "./consumers/place-bet-consumer";
-import { SedieBot, SedieGameCron } from "./crons";
-import { SedieBets, SedieTmpBets } from "./models/sedie-bets";
-import SedieRounds from "./models/sedie-rounds";
+import PlaceBetConsumer from "./consumers/vip-sedie-place-bet-consumer";
+import { VipSeDieBot, VipSeDieGameCron } from "./crons";
+import { VipSeDieBets, VipSeDieRounds, VipSeDieTmpBets } from "./models";
 
 const { asClass, asValue } = awilix;
 
@@ -13,9 +12,9 @@ export default class VipSeDieContainerRegistry extends Table.TableContainerRegis
         super.registerModels();
 
         this.container.register({
-            roundsRepository: asValue(SedieRounds),
-            betsRepository: asValue(SedieBets),
-            tempBetsRepository: asValue(SedieTmpBets),
+            roundsRepository: asValue(VipSeDieRounds),
+            betsRepository: asValue(VipSeDieBets),
+            tempBetsRepository: asValue(VipSeDieTmpBets),
         });
     }
 
@@ -31,8 +30,8 @@ export default class VipSeDieContainerRegistry extends Table.TableContainerRegis
         super.registerCrons();
 
         this.container.register({
-            bot: asClass(SedieBot).singleton(),
-            gameCron: asClass(SedieGameCron).singleton().proxy(),
+            bot: asClass(VipSeDieBot).singleton(),
+            gameCron: asClass(VipSeDieGameCron).singleton().proxy(),
         });
     }
 }
