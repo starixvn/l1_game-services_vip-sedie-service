@@ -6019,10 +6019,10 @@
     "mongoose-long" "^0.3.0"
     "numeral" "^2.0.6"
 
-"sc-game-base@1.22.3-beta.1":
-  "integrity" "sha512-w0HE7IdU2r26A1omlunzIPI9wJcCVADAGlFQDdsPq4Ju4FRVHbQVZFefnJIfxOF4+Sd8y3TWcRGaa8guw2OyYA=="
-  "resolved" "http://npm.lumigame.com/sc-game-base/-/sc-game-base-1.22.3-beta.1.tgz"
-  "version" "1.22.3-beta.1"
+"sc-game-base@1.22.3-beta.2":
+  "integrity" "sha512-0gulWgyOiTvV6LCRObnEZdVTAg7LG0r35AYMKKVK7zJbb1Qv/za5/0S8b9UDsEt41XsW+dHnM4U+MuM/yJblRg=="
+  "resolved" "http://npm.lumigame.com/sc-game-base/-/sc-game-base-1.22.3-beta.2.tgz"
+  "version" "1.22.3-beta.2"
   dependencies:
     "awilix" "^4.3.1"
     "axios" "^0.20.0"
