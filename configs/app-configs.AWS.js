@@ -42,7 +42,7 @@ export default {
         },
     },
     sentry: {
-        sentryUrl: "http://26db550e29da4d038d1bb78ce1b79330@10.99.99.187:803/108",
+        sentryUrl: "http://58fc00e79ab34a3bab04a79038760cb8@sentry.sabagame.com/8",
         logIdentifier: "sedie",
         env: "AWS",
     },
@@ -52,4 +52,8 @@ export default {
     adminSecretKey: "asWDEer4yGdgsdqR4uqmKQZgh",
     enableCorsWs: true,
     corsUrls: ["https://sc1-games.sportsfun.app", "https://sc1-adm.sportsfun.app"],
+    metrics: {
+        enable: true,
+        secretKey: "6c1f0f28-70f2-46ae-b031-22624a6cd8df",
+    },
 };

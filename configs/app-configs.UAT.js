@@ -41,7 +41,7 @@ export default {
         },
     },
     sentry: {
-        sentryUrl: "http://846d748df9dd4592804e04f950ea9dfb@10.99.99.187:800/122",
+        sentryUrl: "http://52368c4019044019885440599c180bda@10.99.99.187:800/24",
         logIdentifier: "vipsedie",
         env: "UAT",
     },
@@ -58,4 +58,8 @@ export default {
         "http://uatm.sabagame.com",
         "https://uatm.sabagame.com",
     ],
+    metrics: {
+        enable: true,
+        secretKey: "6c1f0f28-70f2-46ae-b031-22624a6cd8df",
+    },
 };
