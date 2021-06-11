@@ -219,9 +219,7 @@ export default class VipSeDieBot extends Table.Crons.TableGameBot {
     }
 
     getRandomChoiceFromGroup(group) {
-        const randomIndex = (Math.random() * group.length) >> 0;
-
-        return group[randomIndex];
+        return this.chance.pickone(group);
     }
 
     getTotalAmountOnChoiceGroup(choices) {
