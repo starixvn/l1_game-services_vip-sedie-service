@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import { helpers } from "sc-common";
 import { Core, Table } from "sc-game-base";
-import { Bots } from "sc-smart-bot";
 
 import constants from "../constants";
 
@@ -32,18 +31,23 @@ export default class VipSeDieBot extends Table.Crons.TableGameBot {
         this.equalOpts = ["red2"];
 
         this.smallTicketRatio = 70;
+        this.smallTicketValueRatio = 50;
         this.smallTickets = 0;
         this.resetAllBets();
 
-        this.tableGameSmartBot.registerRemoveAllBotEvent(this.removeAllSmartBots, this);
-        this.tableGameSmartBot.registerPlaceBetEvent(this.smartBotAfterPlacingBet, this);
-        this.tableGameSmartBot.registerAdjustBetEvent(this.insertOrUpdateBetForSmartBot, this);
-        this.tableGameSmartBot.onError(this.logService.logError);
+        if (this.tableGameSmartBot) {
+            this.tableGameSmartBot.registerRemoveAllBotEvent(this.removeAllSmartBots, this);
+            this.tableGameSmartBot.registerPlaceBetEvent(this.smartBotAfterPlacingBet, this);
+            this.tableGameSmartBot.registerAdjustBetEvent(this.insertOrUpdateBetForSmartBot, this);
+            this.tableGameSmartBot.onError(this.logService.logError);
+        }
     }
 
     async reset() {
         await super.reset();
-        await this.resetSmartBots();
+        if (this.tableGameSmartBot) {
+            await this.resetSmartBots();
+        }
     }
 
     async resetSmartBots() {
@@ -172,7 +176,7 @@ export default class VipSeDieBot extends Table.Crons.TableGameBot {
         const isSmallTicket = this.totalTickets === 0 ? true : (this.smallTickets * 100) / this.totalTickets < this.smallTicketRatio;
         let maxBet = Math.min(gameConfigs.choices_maxbet[choice], gameConfigs.bot_maxbet);
 
-        const maxBetOfSmallTicket = Math.min(minBet * 50, maxBet);
+        const maxBetOfSmallTicket = Math.min(minBet * this.smallTicketValueRatio, maxBet);
 
         if (this.rareOpts.includes(choice)) {
             maxBet = Math.min(minBet * 10, gameConfigs.bot_maxbet * 0.2, gameConfigs.choices_maxbet[choice]);
@@ -242,7 +246,7 @@ export default class VipSeDieBot extends Table.Crons.TableGameBot {
     }
 
     isSmallTicket(amount) {
-        return amount <= this.getMinBet() * 50;
+        return amount <= this.getMinBet() * this.smallTicketValueRatio;
     }
 
     updateBotInRoomData(bot, choice, amount, balance) {
@@ -253,7 +257,7 @@ export default class VipSeDieBot extends Table.Crons.TableGameBot {
     }
 
     convertAmountToChip(amount) {
-        const chipList = constants.chips.filter((chip) => amount % chip === 0);
+        const chipList = constants.chips.filter((chip) => amount / chip >= 1);
 
         return chipList.length > 0 ? chipList[0] : this.getMinBet();
     }
