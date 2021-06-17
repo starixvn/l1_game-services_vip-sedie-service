@@ -9,18 +9,18 @@ export default class VipSeDiePlaceBetConsumer extends Core.BaseEventConsumers.Pl
         return [
             {
                 failure: !configs.enabled,
-                notice: helpers.noticeHelper.placeBetNextRound,
+                notice: this.getNoticeObj(helpers.noticeHelper.placeBetNextRound),
             },
             {
                 failure:
                     this.gameData.remainingTime >= this.definition.durations.placingBets &&
                     this.gameData.remainingTime <= shakeThePlateTime,
-                notice: helpers.noticeHelper.cannotPlaceBet,
+                notice: this.getNoticeObj(helpers.noticeHelper.cannotPlaceBet),
             },
             {
                 failure:
                     this.gameData.remainingTime < this.definition.durations.lockingBet || this.gameData.remainingTime > shakeThePlateTime,
-                notice: helpers.noticeHelper.placeBetNextRound,
+                notice: this.getNoticeObj(helpers.noticeHelper.placeBetNextRound),
             },
         ];
     }
