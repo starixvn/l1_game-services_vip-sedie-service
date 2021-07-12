@@ -2,7 +2,7 @@ import Chance from "chance";
 import { helpers } from "sc-common";
 import { Core } from "sc-game-base";
 
-import VipSeDiePlaceBetConsumer from "../vip-sedie-place-bet-consumer";
+import VipSeDiePlaceBetConsumer from "../../src/consumers/vip-sedie-place-bet-consumer";
 
 describe("composeBettingTimeValidationCriteria tests", () => {
     const playerName = "nhanvat01";
