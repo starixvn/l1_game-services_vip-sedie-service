@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { helpers } from "sc-common";
-import { Core, Table } from "sc-game-base";
+import { Constants, Table } from "sc-game-base";
 
 import constants from "../constants";
 
@@ -87,7 +87,7 @@ export default class VipSeDieBot extends Table.Crons.TableGameBot {
             },
         };
 
-        this.publisher.publishToAllUsers(payload);
+        this.publisher.publishToAllUsersExceptSystem(Constants.Systems.Mobi, null, payload);
     }
 
     async resetInRoomTrackings() {
@@ -102,7 +102,7 @@ export default class VipSeDieBot extends Table.Crons.TableGameBot {
             smartBots.map(async (bot) => {
                 await this.userInfosRepository.updateOne({ id: bot.id }, { inRoom: false, inGameRoom: "", patternId: 0 });
 
-                this.publisher.publishToAllUsers({ outgame: { playerId: bot.id } });
+                this.publisher.publishToAllUsersExceptSystem(Constants.Systems.Mobi, null, { outgame: { playerId: bot.id } });
 
                 delete this.gameData.players[bot.id];
             })
