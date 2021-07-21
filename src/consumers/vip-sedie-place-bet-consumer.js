@@ -2,7 +2,7 @@ import { helpers } from "sc-common";
 import { Core } from "sc-game-base";
 
 export default class VipSeDiePlaceBetConsumer extends Core.BaseEventConsumers.PlaceBetConsumer {
-    composeBettingTimeValidationCriteria() {
+    composeBettingTimeValidationCriteria(roundId) {
         const configs = this.gameData.gameConfigs;
         const shakeThePlateTime = this.definition.durations.placingBets + this.definition.durations.shakeThePlateDuration;
 
@@ -10,6 +10,10 @@ export default class VipSeDiePlaceBetConsumer extends Core.BaseEventConsumers.Pl
             {
                 failure: !configs.enabled,
                 notice: this.getNoticeObj(helpers.noticeHelper.placeBetNextRound),
+            },
+            {
+                failure: roundId !== this.gameData.roundId,
+                notice: this.getNoticeObj(helpers.noticeHelper.invalidBet, { gameRoundId: roundId }),
             },
             {
                 failure:
