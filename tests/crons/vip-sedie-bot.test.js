@@ -111,7 +111,7 @@ describe("VipSeDieBot tests", () => {
 
         // assert
         expect(userInfosRepository.updateMany).toHaveBeenCalledWith(
-            { type: true, inGameRoom: definition.configName, patternId: 0 },
+            { type: true, inGameRoom: definition.configName },
             { inRoom: false, inGameRoom: "" }
         );
     });
@@ -195,10 +195,10 @@ describe("VipSeDieBot tests", () => {
             const bot = new VipSeDieBot(definition, gameData, publisher, userInfosRepository, tempBetsRepository);
 
             // act
-            const chip = bot.convertAmountToChip(50);
+            const chip = bot.convertAmountToChip(100);
 
             // assert
-            expect(chip).toBe(50);
+            expect(chip).toBe(100);
         });
 
         it("should return correct chip if amount nearby", () => {
@@ -206,10 +206,10 @@ describe("VipSeDieBot tests", () => {
             const bot = new VipSeDieBot(definition, gameData, publisher, userInfosRepository, tempBetsRepository);
 
             // act
-            const chip = bot.convertAmountToChip(70);
+            const chip = bot.convertAmountToChip(120);
 
             // assert
-            expect(chip).toBe(50);
+            expect(chip).toBe(100);
         });
 
         it("should return minBet if amount less than minBet", () => {
@@ -346,41 +346,6 @@ describe("VipSeDieBot tests", () => {
             // assert
             expect(gameData.players[botPlayer.id]).toEqual(botPlayer);
             expect(publisher.publishToAllUsersExceptSystem).toHaveBeenCalled();
-        });
-    });
-
-    describe("smartBotAfterPlacingBet test", () => {
-        it("should call super to update bets and publish payload", () => {
-            // arrange
-            const bot = new VipSeDieBot(definition, gameData, publisher, userInfosRepository, tempBetsRepository);
-            const botPlayer = { id: "23" };
-            gameData.players[botPlayer.id] = botPlayer;
-            spyOn(TableGameBot.prototype, "updateTotalBetsAndChips");
-            spyOn(TableGameBot.prototype, "updateBalanceAndPublishBetPayload");
-
-            // act
-            bot.smartBotAfterPlacingBet(botPlayer, chance.pickone(bot.equalOpts), 20, 1000);
-
-            // assert
-            expect(TableGameBot.prototype.updateTotalBetsAndChips).toHaveBeenCalled();
-            expect(TableGameBot.prototype.updateBalanceAndPublishBetPayload).toHaveBeenCalled();
-        });
-    });
-
-    describe("insertOrUpdateBetForSmartBot test", () => {
-        it("should call super.insertOrUpdateBet", async () => {
-            // arrange
-            const bot = new VipSeDieBot(definition, gameData, publisher, userInfosRepository, tempBetsRepository);
-            const botPlayer = { id: "23" };
-            gameData.players[botPlayer.id] = botPlayer;
-            spyOn(TableGameBot.prototype, "insertOrUpdateBet");
-            spyOn(tempBetsRepository, "findOne");
-
-            // act
-            await bot.insertOrUpdateBetForSmartBot(botPlayer, chance.pickone(bot.equalOpts), 20);
-
-            // assert
-            expect(TableGameBot.prototype.insertOrUpdateBet).toHaveBeenCalled();
         });
     });
 });
