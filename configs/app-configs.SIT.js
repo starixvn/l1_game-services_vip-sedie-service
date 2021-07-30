@@ -55,8 +55,8 @@ export default {
         "http://sit.v-gaming.net",
         "http://sit-adm.v-gaming.net",
         "https://sit-adm.v-gaming.net",
-        "http://sitm.v-gaming.net",
-        "https://sitm.v-gaming.net",
+        "http://msit.v-gaming.net",
+        "https://msit.v-gaming.net",
     ],
     metrics: {
         enable: true,

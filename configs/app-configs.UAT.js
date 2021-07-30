@@ -56,8 +56,8 @@ export default {
         "https://uat.v-gaming.net",
         "http://uat-adm.v-gaming.net",
         "https://uat-adm.v-gaming.net",
-        "http://uatm.v-gaming.net",
-        "https://uatm.v-gaming.net",
+        "http://muat.v-gaming.net",
+        "https://muat.v-gaming.net",
     ],
     metrics: {
         enable: true,
