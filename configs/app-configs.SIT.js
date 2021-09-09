@@ -51,12 +51,12 @@ export default {
     adminSecretKey: "asWDEerfOIdgsdqRTFabvmgh",
     enableCorsWs: true,
     corsUrls: [
-        "https://sit.v-gaming.net",
-        "http://sit.v-gaming.net",
-        "http://sit-adm.v-gaming.net",
-        "https://sit-adm.v-gaming.net",
-        "http://msit.v-gaming.net",
-        "https://msit.v-gaming.net",
+        "https://l2sit.sgamesuat.net",
+        "http://l2sit.sgamesuat.net",
+        "http://l2sitadm.sgamesuat.net",
+        "https://l2sitadm.sgamesuat.net",
+        "http://l2sitm.sgamesuat.net",
+        "https://l2sitm.sgamesuat.net",
     ],
     metrics: {
         enable: true,
