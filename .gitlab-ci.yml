@@ -1,3 +1,6 @@
+variables:
+  SMOKE_PRODUCT_NAME: VIpSedie
+
 include:
   - project: "ci/repos-ci/pentagon_l1_vip_sedie_service"
     ref: master
