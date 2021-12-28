@@ -195,10 +195,10 @@ describe("VipSeDieBot tests", () => {
             const bot = new VipSeDieBot(definition, gameData, publisher, userInfosRepository, tempBetsRepository);
 
             // act
-            const chip = bot.convertAmountToChip(100);
+            const chip = bot.convertAmountToChip(100_000);
 
             // assert
-            expect(chip).toBe(100);
+            expect(chip).toBe(100_000);
         });
 
         it("should return correct chip if amount nearby", () => {
@@ -206,10 +206,10 @@ describe("VipSeDieBot tests", () => {
             const bot = new VipSeDieBot(definition, gameData, publisher, userInfosRepository, tempBetsRepository);
 
             // act
-            const chip = bot.convertAmountToChip(120);
+            const chip = bot.convertAmountToChip(120_000);
 
             // assert
-            expect(chip).toBe(100);
+            expect(chip).toBe(100_000);
         });
 
         it("should return minBet if amount less than minBet", () => {
@@ -217,7 +217,7 @@ describe("VipSeDieBot tests", () => {
             const bot = new VipSeDieBot(definition, gameData, publisher, userInfosRepository, tempBetsRepository);
 
             // act
-            const chip = bot.convertAmountToChip(0.5);
+            const chip = bot.convertAmountToChip(50);
 
             // assert
             expect(chip).toBe(bot.getMinBet());
