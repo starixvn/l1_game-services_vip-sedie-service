@@ -4,12 +4,15 @@
     "description": "",
     "main": "./src/app.js",
     "scripts": {
-        "test": "jest",
-        "test-coverage": "jest --collect-coverage",
+        "test": "jest --testPathPattern=tests/unit-tests/",
+        "test-coverage": "jest --collect-coverage --testPathPattern=tests/unit-tests/",
+        "test-:-integration-:-setup-test-data": "node --es-module-specifier-resolution=node ./tests/integration-tests/stubs/test-data-setup.js",
+        "test-:-integration-:-start-service": "node --es-module-specifier-resolution=node ./tests/integration-tests/game-service-setup/game-service-app.js",
+        "test-:-integration-:-start-test": "jest --testPathPattern=tests/integration-tests/  --detectOpenHandles --ci --reporters=default --reporters=jest-junit",
         "dev": "nodemon --es-module-specifier-resolution=node --watch ./src ./src/app.js",
         "debug": "nodemon --es-module-specifier-resolution=node --watch ./ --inspect ./src/app.js",
         "prod": "node --max-old-space-size=8192 --es-module-specifier-resolution=node ./src/app.js",
-        "reg": "npm set registry http://npm.lumigame.com"
+        "reg": "npm set registry https://npm.lumigame.com"
     },
     "jestSonar": {
         "reportPath": "reports",
@@ -21,10 +24,11 @@
     "type": "module",
     "dependencies": {
         "nodemon": "^2.0.4",
-        "sc-game-base": "2.3.0",
+        "sc-game-base": "2.2.2-beta.0",
         "sc-smart-bot": "1.0.0"
     },
     "devDependencies": {
+        "@babel/core": "^7.0.0",
         "@babel/preset-env": "^7.12.11",
         "@commitlint/cli": "^9.1.2",
         "@commitlint/config-conventional": "^9.1.2",
@@ -40,8 +44,10 @@
         "install": "^0.13.0",
         "jest": "^26.6.3",
         "jest-extended": "^0.11.5",
+        "jest-junit": "^12.2.0",
         "jest-micro-auto-stub": "^1.0.6",
         "jest-sonar-reporter": "^2.0.0",
+        "sc-game-service-integration-utils": "1.0.0-beta.20",
         "sc-semantic-release": "^1.1.0",
         "semantic-release": "^17.1.1"
     },
