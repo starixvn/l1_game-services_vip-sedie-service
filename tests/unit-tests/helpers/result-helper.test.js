@@ -1,4 +1,4 @@
-import { generateResult, getSettlementResult } from "../../../src/helpers/result-helper";
+import { generateResult, getSettlementResult, generateRawResultForMd5 } from "../../../src/helpers/result-helper";
 
 describe("getSettlementResult tests", () => {
     it("should return odd and white3 if results have ONE red", () => {
@@ -109,5 +109,18 @@ describe("generateResult tests", () => {
 
         // assert
         expect(Object.keys(result).length).toBe(4);
+    });
+});
+
+describe("generateRawResultForMd5", () => {
+    it("convert result to raw result for md5", () => {
+        // Arrange
+        const roundResult = { red1: true, red2: false, red3: false, red4: true };
+
+        // Act
+        const result = generateRawResultForMd5(roundResult);
+
+        // Assert
+        expect(result).toBe("{1001}");
     });
 });
