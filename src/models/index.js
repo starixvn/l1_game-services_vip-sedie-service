@@ -3,7 +3,7 @@ import VipSeDieRounds from "./vip-sedie-rounds";
 import VipSeDieSmartBotBetActions from "./vip-sedie-smartbot-bet-actions";
 import VipSeDieSmartBotBetLogs from "./vip-sedie-smartbot-bet-logs";
 import VipSeDieSmartBotPatterns from "./vip-sedie-smartbot-patterns";
-import VipSeDieMD5s from "./vip-sedie-md5s";
+import VipSeDieResults from "./vip-sedie-results";
 
 export {
     VipSeDieBets,
@@ -12,5 +12,5 @@ export {
     VipSeDieSmartBotPatterns,
     VipSeDieSmartBotBetActions,
     VipSeDieSmartBotBetLogs,
-    VipSeDieMD5s,
+    VipSeDieResults,
 };
