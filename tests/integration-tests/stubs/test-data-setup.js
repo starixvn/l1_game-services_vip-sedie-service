@@ -11,7 +11,7 @@ import {
     normalUser,
 } from "sc-game-service-integration-utils";
 
-import configs from "../../../src/app-configs";
+import configs from "../../../src/app-configs.IGT";
 import { VipSeDieBets } from "../../../src/models";
 import VipSeDieRoundModel from "../../../src/models/vip-sedie-rounds";
 import { currencyData, game, gameConfig, rounds, userBetData } from "./test-data";
