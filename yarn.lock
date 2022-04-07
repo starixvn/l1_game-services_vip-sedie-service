@@ -2989,6 +2989,11 @@ chance@^1.1.7:
   resolved "http://npm.lumigame.com/chance/-/chance-1.1.7.tgz"
   integrity sha512-bua/2cZEfzS6qPm0vi3JEvGNbriDLcMj9lKxCQOjUcCJRcyjA7umP0zZm6bKWWlBN04vA0L99QGH/CZQawr0eg==
 
+chance@^1.1.8:
+  version "1.1.8"
+  resolved "https://npm.lumigame.com/chance/-/chance-1.1.8.tgz#5d6c2b78c9170bf6eb9df7acdda04363085be909"
+  integrity sha512-v7fi5Hj2VbR6dJEGRWLmJBA83LJMS47pkAbmROFxHWd9qmE1esHRZW8Clf1Fhzr3rjxnNZVCjOEv/ivFxeIMtg==
+
 char-regex@^1.0.2:
   version "1.0.2"
   resolved "http://npm.lumigame.com/char-regex/-/char-regex-1.0.2.tgz"
@@ -8509,6 +8514,18 @@ qw@~1.0.1:
   resolved "http://npm.lumigame.com/qw/-/qw-1.0.1.tgz"
   integrity sha1-77/cdA+a0FQwRCassYNBLMi5ltQ=
 
+random-js@^2.1.0:
+  version "2.1.0"
+  resolved "https://npm.lumigame.com/random-js/-/random-js-2.1.0.tgz#0c03238b0a4f701f7a4c7303036ade3083d8ee14"
+  integrity sha512-CRUyWmnzmZBA7RZSVGq0xMqmgCyPPxbiKNLFA5ud7KenojVX2s7Gv+V7eB52beKTPGxWRnVZ7D/tCIgYJJ8vNQ==
+
+random@^3.0.6:
+  version "3.0.6"
+  resolved "https://npm.lumigame.com/random/-/random-3.0.6.tgz#c918e9498dee461affde72986c79ac4d9ef486cf"
+  integrity sha512-B53pp/8eFBxULg6sfQgjjmy3vZ2CWVt0Nk4OgkSpvmAf3VXfcEUgGASbNWbXiTiExWe8hCIf5HlddNHzrte9jg==
+  dependencies:
+    seedrandom "^3.0.5"
+
 range-parser@~1.2.1:
   version "1.2.1"
   resolved "http://npm.lumigame.com/range-parser/-/range-parser-1.2.1.tgz"
@@ -9054,10 +9071,10 @@ sc-common@^1.8.0:
     mongoose-long "^0.3.0"
     numeral "^2.0.6"
 
-sc-game-base@2.6.0:
-  version "2.6.0"
-  resolved "https://npm.lumigame.com/sc-game-base/-/sc-game-base-2.6.0.tgz#e678ab3caeb1a08d72b0a5ad14f93ff0177f40b9"
-  integrity sha512-U0Gb+DC9TOARY3spSE3dqWll5rrKaiosvaSVGltYZLo1SzxaKXo/xQQ1RTeBvhnh5Q72YNB7Qj6adDgKruhn7g==
+sc-game-base@2.6.1-beta.17, sc-game-base@^2.6.1-beta.16:
+  version "2.6.1-beta.17"
+  resolved "https://npm.lumigame.com/sc-game-base/-/sc-game-base-2.6.1-beta.17.tgz#a8cb6d19c35e8f58857ab1b17a453617ad7a7a18"
+  integrity sha512-GfV+YpEoIOXqC7DPqvP5AFIev+MHzYMoAeYgHNy/O8AIGijk9TSvnevS7AQybrHV5dwT3PxsE4OKVMlnlfpV3w==
   dependencies:
     awilix "^4.3.1"
     axios "^0.20.0"
@@ -9078,38 +9095,14 @@ sc-game-base@2.6.0:
     socket.io-msgpack-parser "^3.0.1"
     socket.io-prom-metrics "^1.0.3"
 
-sc-game-base@2.6.1-beta.16:
-  version "2.6.1-beta.16"
-  resolved "https://npm.lumigame.com/sc-game-base/-/sc-game-base-2.6.1-beta.16.tgz#4203016003a9faaee4cb9b38db6ae4307d078d88"
-  integrity sha512-DLjpvu7vHq7TKhP3R1aKSpk46yAO0bZdQWhBq1ifkVNbn7OfYDTBZsZdRIfDiy8a6MQswuPvoGOPEuzsNuDK0Q==
-  dependencies:
-    awilix "^4.3.1"
-    axios "^0.20.0"
-    body-parser "^1.19.0"
-    chance "^1.1.7"
-    cors "^2.8.5"
-    cron "^1.8.2"
-    express "^4.17.1"
-    helmet "^3.23.3"
-    lodash "^4.17.19"
-    mongoose "^5.9.25"
-    morgan "^1.10.0"
-    openid-client "^4.2.0"
-    sc-base-apis "1.15.2"
-    sc-base-database "1.9.2"
-    sc-common "^1.8.0"
-    socket.io "^4.1.2"
-    socket.io-msgpack-parser "^3.0.1"
-    socket.io-prom-metrics "^1.0.3"
-
-sc-game-service-integration-utils@1.1.0:
-  version "1.1.0"
-  resolved "https://npm.lumigame.com/sc-game-service-integration-utils/-/sc-game-service-integration-utils-1.1.0.tgz#65f8cdaeb1aa6653537a9db35ae2c971d16ed901"
-  integrity sha512-4RUEmVCThmBulx9xDp991e6FpvJZIpgT/eNj/gqXUWab5+gLXBW3p/AdNymP9ED99epzQQHyK03qsVMuqpHCFQ==
+sc-game-service-integration-utils@1.1.3-beta.0:
+  version "1.1.3-beta.0"
+  resolved "https://npm.lumigame.com/sc-game-service-integration-utils/-/sc-game-service-integration-utils-1.1.3-beta.0.tgz#abf8af4694e6e3efacdc5ca23783f08c6cea1171"
+  integrity sha512-IRtTWqrFIsxozkElFruEUkXXDQ0jf0RfE4uA9GFCLV5Q8OR+33DoFkXn6Ujy0A51ZV252Yrjmk4NBKuP7bFcMQ==
   dependencies:
     lodash.matches "^4.6.0"
     nock "^13.2.1"
-    sc-game-base "2.6.0"
+    sc-game-base "^2.6.1-beta.16"
     socket.io-client "^4.4.0"
 
 sc-semantic-release@^1.1.0:
@@ -9126,6 +9119,11 @@ sc-smart-bot@1.0.0:
     chance "^1.1.7"
     eventemitter3 "^4.0.7"
     mongoose "^5.9.25"
+
+seedrandom@^3.0.5:
+  version "3.0.5"
+  resolved "https://npm.lumigame.com/seedrandom/-/seedrandom-3.0.5.tgz#54edc85c95222525b0c7a6f6b3543d8e0b3aa0a7"
+  integrity sha512-8OwmbklUNzwezjGInmZ+2clQmExQPvomqjL7LFqOYqtmuxRgQYqOD3mHaU+MvZn5FLUeVxVfQjwLZW/n/JFuqg==
 
 semantic-release@^17.1.1:
   version "17.3.9"
