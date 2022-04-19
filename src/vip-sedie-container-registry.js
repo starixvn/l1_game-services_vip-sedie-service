@@ -11,6 +11,7 @@ import {
     VipSeDieSmartBotBetLogs,
     VipSeDieSmartBotPatterns,
     VipSeDieTmpBets,
+    VipSeDieResults,
 } from "./models";
 
 const { asClass, asValue } = awilix;
@@ -26,6 +27,7 @@ export default class VipSeDieContainerRegistry extends Table.TableContainerRegis
             betPatternRepository: asValue(VipSeDieSmartBotPatterns),
             betActionRepository: asValue(VipSeDieSmartBotBetActions),
             smartBotBetLogsRepository: asValue(VipSeDieSmartBotBetLogs),
+            resultsRepository: asValue(VipSeDieResults),
         });
 
         this.container.register(new SmartBotContainerRegistry().register());
