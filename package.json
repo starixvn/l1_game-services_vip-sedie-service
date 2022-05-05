@@ -3,7 +3,6 @@
     "version": "1.0.0",
     "description": "",
     "main": "./src/app.js",
-    
     "scripts": {
         "test": "jest",
         "test-coverage": "jest --collect-coverage",
@@ -22,7 +21,7 @@
     "type": "module",
     "dependencies": {
         "nodemon": "^2.0.4",
-        "sc-game-base": "2.8.1-beta.2",
+        "sc-game-base": "2.9.0",
         "sc-smart-bot": "1.0.0"
     },
     "devDependencies": {
