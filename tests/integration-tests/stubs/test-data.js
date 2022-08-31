@@ -90,8 +90,8 @@ const rounds = [
 const promotions = [
     {
         gameId: game.id,
-        startDateTime: new Date(new Date().setSeconds(new Date().getSeconds() - 1)),
-        endDateTime: new Date(new Date().setSeconds(new Date().getSeconds() + 30)),
+        startDateTime: new Date(new Date().setSeconds(new Date().getSeconds() + 20)),
+        endDateTime: new Date(new Date().setSeconds(new Date().getSeconds() + 60)),
         isDaily: false,
         odds: { even: 1.98, odd: 1.98 },
         status: "enabled",
