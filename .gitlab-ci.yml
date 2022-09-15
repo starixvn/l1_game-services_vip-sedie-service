@@ -1,60 +1,60 @@
+# You can override the included template(s) by including variable overrides
+# SAST customization: https://docs.gitlab.com/ee/user/application_security/sast/#customizing-the-sast-settings
+# Secret Detection customization: https://docs.gitlab.com/ee/user/application_security/secret_detection/#customizing-settings
+# Dependency Scanning customization: https://docs.gitlab.com/ee/user/application_security/dependency_scanning/#customizing-the-dependency-scanning-settings
+# Note that environment variables can be set in several places
+# See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 variables:
   SMOKE_PRODUCT_NAME: VIpSedie
-
 include:
-  - project: "ci/repos-ci/pentagon_l1_vip_sedie_service"
-    ref: master
-    file: "gitlab-ci.yml"
-
-.if-deploy-local: &if-deploy-local
-  if: '$CI_COMMIT_TAG =~ /local/'
-
-.if-deploy-sit: &if-deploy-sit
-  if: '$CI_COMMIT_TAG =~ /sit/'
-
-.if-deploy-uat: &if-deploy-uat
-  if: '$CI_COMMIT_TAG =~ /uat/'
-
-.if-deploy-prod: &if-deploy-prod
-  if: '$CI_COMMIT_TAG =~ /prod/'
-
+- project: ci/repos-ci/pentagon_l1_vip_sedie_service
+  ref: master
+  file: gitlab-ci.yml
+- template: Security/SAST.gitlab-ci.yml
+".if-deploy-local":
+  if: "$CI_COMMIT_TAG =~ /local/"
+".if-deploy-sit":
+  if: "$CI_COMMIT_TAG =~ /sit/"
+".if-deploy-uat":
+  if: "$CI_COMMIT_TAG =~ /uat/"
+".if-deploy-prod":
+  if: "$CI_COMMIT_TAG =~ /prod/"
 integration-tests:
   stage: test
-  needs: ['unit-test-js']
+  needs:
+  - unit-test-js
   tags:
-    - docker
-
+  - docker
   services:
-    - name: registry.nexdev.net:5050/docker/database/mongo:4.4.8
-      alias: mongo
-      
+  - name: registry.nexdev.net:5050/docker/database/mongo:4.4.8
+    alias: mongo
   image: registry.nexdev.net:5050/docker/node:14.15.1-slim
   before_script:
-    - cp ./src/app-configs.IGT.js ./src/app-configs.IGT.original.js
-    - cp ./configs/app-configs.IGT.js ./src/app-configs.IGT.js
-    - npm set registry http://npm.lumigame.com
-    - yarn install
-
+  - cp ./src/app-configs.IGT.js ./src/app-configs.IGT.original.js
+  - cp ./configs/app-configs.IGT.js ./src/app-configs.IGT.js
+  - npm set registry http://npm.lumigame.com
+  - yarn install
   script:
-    - npm run integration-test
-
+  - npm run integration-test
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-    - if: '$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS'
-      when: never
-    - if: '$CI_COMMIT_BRANCH'
-
+  - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
+    when: never
+  - if: "$CI_COMMIT_BRANCH"
   artifacts:
     when: always
     paths:
-      - ./coverage
+    - "./coverage"
     reports:
       junit:
-        - junit.xml
+      - junit.xml
     expire_in: 1 day
-
 unit-test-js:
   artifacts:
     reports:
       junit: coverage/*.xml
       cobertura: coverage/cobertura-coverage.xml
+stages:
+- test
+sast:
+  stage: test
