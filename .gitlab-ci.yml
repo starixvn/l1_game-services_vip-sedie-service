@@ -59,6 +59,14 @@ unit-test-js:
       junit: coverage/*.xml
       cobertura: coverage/cobertura-coverage.xml
 
+smoke-variable:
+  stage: post-deploy 
+  script:
+    - echo $CI_ENVIRONMENT_NAME
+    - echo $CI_COMMIT_TAG
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^deploy-.*-local\d*-.*/ && $DEPLOY_BY == "rocketor"'
+
 smoke-test:
   stage: post-deploy
   variables:
@@ -66,9 +74,6 @@ smoke-test:
     PROJECT: $SMOKE_PROJECT_NAME
     MODE: $SMOKE_MODE
   allow_failure: true
-  script:
-    - echo $CI_ENVIRONMENT_NAME
-    - echo $CI_COMMIT_TAG
   rules:
     - if: '$CI_COMMIT_TAG =~ /^deploy-.*-local\d*-.*/ && $DEPLOY_BY == "rocketor"'
   trigger: 
