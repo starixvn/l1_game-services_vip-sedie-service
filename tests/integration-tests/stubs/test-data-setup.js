@@ -47,8 +47,8 @@ const createTestData = async () => {
     process.exit(0);
 };
 
-const getUserId = async (memberId) => {
-    const user = await users.findOne({ "local.memberId": memberId }, { _id: true }).lean();
+const getUserId = async (playerId) => {
+    const user = await users.findOne({ "local.playerId": playerId }, { _id: true }).lean();
     return user._id.toString();
 };
 
@@ -57,7 +57,7 @@ const createRounds = async () => {
 };
 
 const createUserBetData = async () => {
-    const userId = await getUserId(normalUser.memberId);
+    const userId = await getUserId(normalUser.playerId);
     const betData = userBetData(userId);
     return VipSeDieBets.insertMany(betData);
 };
