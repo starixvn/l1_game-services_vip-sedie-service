@@ -2,18 +2,17 @@ export default {
     hostingPort: 5000,
     apiSettings: {
         enabledApi: true,
-        apiUrl: "http://l1_game_api_AWS:5000",
-        authUrl: "http://l1_auth_api_AWS:5000",
+        apiUrl: "http://l1_game_api_uat:5000",
+        authUrl: "http://l1_auth_api_uat:5000",
         client: {
             id: "game-server",
             secret: "gameserver@20luminet&",
         },
         useAuthenticate: true,
-        placeBetTimeout: 4500,
+        placeBetTimeout: 4000,
         requestTimeout: 10000, // 10s
         enabledApiLogs: true,
     },
-
     socketOptions: {
         pingInterval: 60 * 1000,
         pingTimeout: 60 * 1000,
@@ -23,7 +22,7 @@ export default {
     },
     enabledLogs: true,
     database: {
-        url: "mongodb://lmn_backend:Sb%7B5r%40Xy4X%256%28%24%5Bt%252HsOxJ%7CQt9jdR%26t@10.99.99.56:27101/?replicaSet=L1_SabaAWS",
+        url: "mongodb://lmn_backend:LmnBackend%4022027@10.99.99.187:27201/?replicaSet=SabaUAT&appName=Sedie",
         options: {
             dbName: "minigame",
             useNewUrlParser: true,
@@ -32,12 +31,12 @@ export default {
         },
     },
     sentry: {
-        sentryUrl: "http://58fc00e79ab34a3bab04a79038760cb8@sentry.sabagame.com/8",
-        logIdentifier: "sedie",
-        env: "AWS",
+        sentryUrl: "http://52368c4019044019885440599c180bda@10.2.190.51:9009/24",
+        logIdentifier: "vipsedie",
+        env: "UAT",
     },
     authenticateSettings: {
-        url: "http://l1_auth_api_AWS:5000",
+        url: "http://l1_auth_api_uat:5000",
         id: "game-services",
         secret: "gameservices@20luminet&",
         requestTimeout: 10000,
@@ -45,14 +44,30 @@ export default {
         audiences: ["api", "admin-api"],
     },
     userServiceSettings: {
-        url: "http://localhost:8004/api",
+        url: "http://l1_user_service_uat:5000",
     },
-    adminSecretKey: "asWDEer4yGdgsdqR4uqmKQZgh",
+    adminSecretKey: "asWDEerfOIdgsdqRTFabvmgh",
     enableCorsWs: true,
-    corsUrls: ["https://sc1-games.sportsfun.app", "https://sc1-adm.sportsfun.app"],
+    corsUrls: [
+        "http://l1uat.sgamesuat.com",
+        "https://l1uat.sgamesuat.com",
+        "http://l1uatadm.sgamesuat.com",
+        "https://l1uatadm.sgamesuat.com",
+        "http://l1uatm.sgamesuat.com",
+        "https://l1uatm.sgamesuat.com",
+    ],
     metrics: {
         enable: true,
         secretKey: "6c1f0f28-70f2-46ae-b031-22624a6cd8df",
     },
-    enableMsgpackParser: false,
+    enableMsgpackParser: true,
+    chatBotSettings: {
+        url: "https://bot.nexdev.net/skynex/api/messages/",
+        token: "0A40aOc7CtpzjbBSJu8KNWQRoXyjRvf9",
+        requestTimeout: 5000,
+        conversationIds: {
+            boostedOdds: -1001774561372,
+        },
+    },
+    enabledBoostedOdds: true,
 };

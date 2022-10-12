@@ -1,0 +1,75 @@
+export default {
+    hostingPort: 5000,
+    apiSettings: {
+        enabledApi: true,
+        apiUrl: "http://l1_game_api_local_1:5000",
+        authUrl: "http://l1_auth_api_local_1:5000",
+        client: {
+            id: "game-server",
+            secret: "gameserver@20luminet&",
+        },
+        useAuthenticate: true,
+        requestTimeout: 10000,
+        placeBetTimeout: 4000,
+        enabledApiLogs: true,
+    },
+    socketOptions: {
+        pingInterval: 60 * 1000,
+        pingTimeout: 60 * 1000,
+        transports: ["websocket"],
+        allowUpgrades: false,
+        perMessageDeflate: false,
+    },
+    enabledLogs: true,
+    database: {
+        url: "mongodb://lmn_backend:LmnBackend@10.10.50.12:39101,10.10.50.13:39101,10.10.50.14:39101/?replicaSet=L1pLocal&appName=Sedie",
+        options: {
+            dbName: "minigame",
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            auto_reconnect: true,
+        },
+    },
+    sentry: {
+        sentryUrl: "https://13f39b8359404ed5aec23655e64ccf78@sentry.lumigame.com/2",
+        logIdentifier: "vipsedie",
+        env: "LOCAL-1",
+    },
+    authenticateSettings: {
+        url: "http://l1_auth_api_local_1:5000",
+        id: "game-services",
+        secret: "gameservices@20luminet&",
+        requestTimeout: 10000,
+        useAuthenticate: true,
+        audiences: ["api", "admin-api"],
+    },
+    userServiceSettings: {
+        url: "http://l1_user_service_local_1:5000",
+    },
+    adminSecretKey: "asWDEerfOIdgsdqRTFabvmgh",
+    enableCorsWs: false,
+    corsUrls: [
+        "http://localhost:7456",
+        "http://localhost:7000",
+        "http://l1-games1.lumigame.com",
+        "https://l1-games1.lumigame.com",
+        "http://l1-admin1.lumigame.com",
+        "http://localhost:3000",
+        "http://l1-m1.lumigame.com",
+        "https://l1-m1.lumigame.com",
+    ],
+    metrics: {
+        enable: true,
+        secretKey: "6c1f0f28-70f2-46ae-b031-22624a6cd8df",
+    },
+    enableMsgpackParser: false,
+    chatBotSettings: {
+        url: "https://bot.nexdev.net/skynex/api/messages/",
+        token: "0A40aOc7CtpzjbBSJu8KNWQRoXyjRvf9",
+        requestTimeout: 5000,
+        conversationIds: {
+            boostedOdds: -1001516573929,
+        },
+    },
+    enabledBoostedOdds: true,
+};

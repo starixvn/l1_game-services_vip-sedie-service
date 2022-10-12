@@ -22,7 +22,7 @@ export default {
     },
     enabledLogs: true,
     database: {
-        url: "mongodb://lmn_backend:M7K4ttH%2AtZ3ml%3F%29%7CA%5DjN4%3FLBhwF%266IO%3C@10.99.99.54:27101,10.99.99.53:27102/?replicaSet=SabaMain",
+        url: "mongodb://lmn_backend:M7K4ttH%2AtZ3ml%3F%29%7CA%5DjN4%3FLBhwF%266IO%3C@10.99.99.54:27101,10.99.99.53:27102/?replicaSet=SabaMain&appName=Sedie",
         options: {
             dbName: "minigame",
             useNewUrlParser: true,
@@ -71,4 +71,13 @@ export default {
         secretKey: "30d15293-c7de-4c77-9293-b85d6c5bfe1a",
     },
     enableMsgpackParser: true,
+    chatBotSettings: {
+        url: "https://bot.nexdev.net/skynex/api/messages/",
+        token: "0A40aOc7CtpzjbBSJu8KNWQRoXyjRvf9",
+        requestTimeout: 5000,
+        conversationIds: {
+            boostedOdds: -1001540066241,
+        },
+    },
+    enabledBoostedOdds: true,
 };
