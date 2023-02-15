@@ -47,15 +47,6 @@ export default {
         url: "http://localhost:8004/api",
     },
     adminSecretKey: "asWDEerfOIdgsdqRTFabvmgh",
-    enableCorsWs: false,
-    corsUrls: [
-        "http://localhost:7456",
-        "http://localhost:7000",
-        "https://games.lumigame.com",
-        "https://admin.lumigame.com",
-        "http://localhost:3000",
-        "https://l1-m.lumigame.com",
-    ],
     metrics: {
         enable: true,
         secretKey: "6c1f0f28-70f2-46ae-b031-22624a6cd8df",
