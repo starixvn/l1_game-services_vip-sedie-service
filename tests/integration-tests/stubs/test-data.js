@@ -29,7 +29,7 @@ const userBetData = (uid) => {
             betwin: 0,
             currency: "$US",
             even: 100,
-            playerId: 1,
+            playerId: "1",
             name: "NormalUser",
             odd: 0,
             odds: gameConfig.odds,
