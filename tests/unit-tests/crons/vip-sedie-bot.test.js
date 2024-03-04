@@ -81,7 +81,7 @@ describe("VipSeDieBot tests", () => {
         it("should call super.reset", async () => {
             // arrange
             const bot = new VipSeDieBot(definition, gameData, publisher, userInfosRepository, tempBetsRepository);
-            spyOn(TableGameBot.prototype, "reset");
+            jest.spyOn(TableGameBot.prototype, "reset");
 
             // act
             await bot.reset();
@@ -95,7 +95,7 @@ describe("VipSeDieBot tests", () => {
         it("should call super.run", async () => {
             // arrange
             const bot = new VipSeDieBot(definition, gameData, publisher, userInfosRepository, tempBetsRepository);
-            spyOn(TableGameBot.prototype, "run");
+            jest.spyOn(TableGameBot.prototype, "run");
 
             // act
             await bot.run();
@@ -109,7 +109,7 @@ describe("VipSeDieBot tests", () => {
         it("should call super.resetAllBotData", () => {
             // arrange
             const bot = new VipSeDieBot(definition, gameData, publisher, userInfosRepository, tempBetsRepository);
-            spyOn(TableGameBot.prototype, "resetAllBotData");
+            jest.spyOn(TableGameBot.prototype, "resetAllBotData");
 
             // act
             bot.resetAllBotData();
@@ -123,7 +123,7 @@ describe("VipSeDieBot tests", () => {
         it("should call userInfosRepository.updateMany", async () => {
             // arrange
             const bot = new VipSeDieBot(definition, gameData, publisher, userInfosRepository, tempBetsRepository);
-            spyOn(userInfosRepository, "updateMany");
+            jest.spyOn(userInfosRepository, "updateMany");
 
             // act
             await bot.resetInRoomTrackings();
@@ -193,7 +193,7 @@ describe("VipSeDieBot tests", () => {
         it("should call super.updateBotInRoomData", () => {
             // arrange
             const bot = new VipSeDieBot(definition, gameData, publisher, userInfosRepository, tempBetsRepository);
-            spyOn(TableGameBot.prototype, "updateBotInRoomData");
+            jest.spyOn(TableGameBot.prototype, "updateBotInRoomData").mockImplementationOnce(jest.fn());
 
             // act
             bot.updateBotInRoomData({}, chance.pickone(bot.mainOpts), chance.integer(), chance.integer());
@@ -204,7 +204,7 @@ describe("VipSeDieBot tests", () => {
 
         it("should update small tickets count and allBets", () => {
             // arrange
-            spyOn(TableGameBot.prototype, "updateBotInRoomData");
+            jest.spyOn(TableGameBot.prototype, "updateBotInRoomData").mockImplementationOnce(jest.fn());
             const bot = new VipSeDieBot(definition, gameData, publisher, userInfosRepository, tempBetsRepository);
             const randomAmount = chance.integer({ min: bot.getMinBet(), max: bot.getMinBet() * bot.smallTicketValueRatio - 1 });
             const choice = chance.pickone(bot.mainOpts);
@@ -309,7 +309,7 @@ describe("VipSeDieBot tests", () => {
                 bot.totalTickets = 1;
                 const totalBetAmount = 1000;
                 const expected = (totalBetAmount * bot.betChoiceRatio.SubOpts) / 100;
-                spyOn(bot, "getAllBetAmount").and.returnValue(totalBetAmount);
+                jest.spyOn(bot, "getAllBetAmount").mockReturnValueOnce(totalBetAmount);
                 const betChoice = chance.pickone(bot.subOpts);
 
                 // act
@@ -326,7 +326,7 @@ describe("VipSeDieBot tests", () => {
                 bot.totalTickets = 1;
                 const totalBetAmount = 1000;
                 const expected = (totalBetAmount * bot.betChoiceRatio.EqualOpts) / 100;
-                spyOn(bot, "getAllBetAmount").and.returnValue(totalBetAmount);
+                jest.spyOn(bot, "getAllBetAmount").mockReturnValueOnce(totalBetAmount);
                 const betChoice = chance.pickone(bot.equalOpts);
 
                 // act
@@ -343,7 +343,7 @@ describe("VipSeDieBot tests", () => {
                 bot.totalTickets = 1;
                 const totalBetAmount = 1000;
                 const expected = gameData.gameConfigs.minbet * 10;
-                spyOn(bot, "getAllBetAmount").and.returnValue(totalBetAmount);
+                jest.spyOn(bot, "getAllBetAmount").mockReturnValueOnce(totalBetAmount);
                 const betChoice = chance.pickone(bot.rareOpts);
 
                 // act
@@ -375,7 +375,7 @@ describe("VipSeDieBot tests", () => {
             // arrange
             const bot = new VipSeDieBot(definition, gameData, publisher, userInfosRepository, tempBetsRepository);
             const botPlayer = { id: "23" };
-            spyOn(publisher, "publishToAllUsersExceptSystem");
+            jest.spyOn(publisher, "publishToAllUsersExceptSystem");
 
             // act
             bot.addToPlayersAndPublish(botPlayer);
@@ -387,7 +387,7 @@ describe("VipSeDieBot tests", () => {
             // arrange
             const bot = new VipSeDieBot(definition, gameData, publisher, userInfosRepository, tempBetsRepository);
             const botPlayer = { id: "23" };
-            spyOn(publisher, "publishToAllUsersExceptSystem");
+            jest.spyOn(publisher, "publishToAllUsersExceptSystem");
 
             // act
             bot.addToPlayersAndPublish(botPlayer);
@@ -403,8 +403,8 @@ describe("VipSeDieBot tests", () => {
             const bot = new VipSeDieBot(definition, gameData, publisher, userInfosRepository, tempBetsRepository);
             const botPlayer = { id: "23" };
             gameData.players[botPlayer.id] = botPlayer;
-            spyOn(TableGameBot.prototype, "updateTotalBetsAndChips");
-            spyOn(TableGameBot.prototype, "updateBalanceAndPublishBetPayload");
+            jest.spyOn(TableGameBot.prototype, "updateTotalBetsAndChips");
+            jest.spyOn(TableGameBot.prototype, "updateBalanceAndPublishBetPayload");
 
             // act
             bot.smartBotAfterPlacingBet(botPlayer, chance.pickone(bot.equalOpts), 20, 1000);
@@ -417,8 +417,8 @@ describe("VipSeDieBot tests", () => {
             const bot = new VipSeDieBot(definition, gameData, publisher, userInfosRepository, tempBetsRepository);
             const botPlayer = { id: "23" };
             gameData.players[botPlayer.id] = botPlayer;
-            spyOn(TableGameBot.prototype, "updateTotalBetsAndChips");
-            spyOn(TableGameBot.prototype, "updateBalanceAndPublishBetPayload");
+            jest.spyOn(TableGameBot.prototype, "updateTotalBetsAndChips");
+            jest.spyOn(TableGameBot.prototype, "updateBalanceAndPublishBetPayload");
 
             // act
             bot.smartBotAfterPlacingBet(botPlayer, chance.pickone(bot.equalOpts), 20, 1000);
@@ -434,8 +434,8 @@ describe("VipSeDieBot tests", () => {
             const bot = new VipSeDieBot(definition, gameData, publisher, userInfosRepository, tempBetsRepository);
             const botPlayer = { id: "23" };
             gameData.players[botPlayer.id] = botPlayer;
-            spyOn(TableGameBot.prototype, "insertOrUpdateBet");
-            spyOn(tempBetsRepository, "findOne");
+            jest.spyOn(TableGameBot.prototype, "insertOrUpdateBet");
+            jest.spyOn(tempBetsRepository, "findOne");
 
             // act
             await bot.insertOrUpdateBetForSmartBot(botPlayer, chance.pickone(bot.equalOpts), 20);
