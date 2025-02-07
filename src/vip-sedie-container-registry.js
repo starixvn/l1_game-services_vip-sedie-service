@@ -15,6 +15,8 @@ import {
     VipSeDieResults,
 } from "./models";
 
+import { ViewConsumer, BaseViewRouter, GameStatusPublisher, RoundResultPublisher } from "sc-game-base-view-module";
+
 const { asClass, asValue } = awilix;
 
 export default class VipSeDieContainerRegistry extends Table.TableContainerRegistry {
@@ -40,6 +42,7 @@ export default class VipSeDieContainerRegistry extends Table.TableContainerRegis
         this.container.register({
             placeBetConsumer: asClass(PlaceBetConsumer).singleton(),
             settleGameRoundConsumer: asClass(VipSeDieSettleGameRoundConsumer).singleton().proxy(),
+            viewConsumer: asClass(ViewConsumer).singleton(),
         });
     }
 
@@ -50,6 +53,22 @@ export default class VipSeDieContainerRegistry extends Table.TableContainerRegis
             bot: asClass(VipSeDieBot).singleton(),
             gameCron: asClass(VipSeDieGameCron).singleton().proxy(),
             processBetQueue: asClass(VipSeDieProcessBetQueue).singleton().proxy(),
+        });
+    }
+    registerRouters() {
+        super.registerRouters();
+
+        this.container.register({
+            baseViewRouter: asClass(BaseViewRouter).proxy(),
+        });
+    }
+
+    registerPublishers() {
+        super.registerPublishers();
+
+        this.container.register({
+            gameStatusPublisher: asClass(GameStatusPublisher).singleton(),
+            roundResultPublisher: asClass(RoundResultPublisher).singleton(),
         });
     }
 }
