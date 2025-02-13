@@ -7941,10 +7941,10 @@ sc-common@1.8.1:
     mongoose-long "^0.3.0"
     numeral "^2.0.6"
 
-sc-game-base-view-module@^1.0.1-beta.3:
-  version "1.0.1-beta.3"
-  resolved "http://npm.lumigame.com/sc-game-base-view-module/-/sc-game-base-view-module-1.0.1-beta.3.tgz#b0942bb0c01d967874c63db0f1877b27d76e4ad0"
-  integrity sha512-LXYp169YWnMyU/BSVWC0jSZQxksf5g2KvvSH4hAQ+B3ZYtrdwKCg7awJ6oQ80ljp/MJ/kiXtGLxJRkSSdVKgqw==
+sc-game-base-view-module@^1.0.1-beta.8:
+  version "1.0.1-beta.8"
+  resolved "http://npm.lumigame.com/sc-game-base-view-module/-/sc-game-base-view-module-1.0.1-beta.8.tgz#9bbb216e84321c0720c32425fd51e9d763336265"
+  integrity sha512-goWdjah65IiEGeNIvvupaVqiOeSmhwvtc4XujYEwRXWWpOlOuNObNReoZNqJ3GhKKEQyZp6R+mPt6fgJ1V6faw==
   dependencies:
     rimraf "^5.0.5"
     sc-game-base "4.1.0"
