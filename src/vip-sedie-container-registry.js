@@ -4,7 +4,7 @@ import { SmartBotContainerRegistry } from "sc-smart-bot";
 
 import PlaceBetConsumer from "./consumers/vip-sedie-place-bet-consumer";
 import VipSeDieSettleGameRoundConsumer from "./consumers/vip-sedie-settle-game-round-consumer";
-import { VipSeDieBot, VipSeDieGameCron } from "./crons";
+import { VipSeDieBot, VipSeDieGameCron, VipSeDieProcessBetQueue } from "./crons";
 import {
     VipSeDieBets,
     VipSeDieRounds,
@@ -49,6 +49,7 @@ export default class VipSeDieContainerRegistry extends Table.TableContainerRegis
         this.container.register({
             bot: asClass(VipSeDieBot).singleton(),
             gameCron: asClass(VipSeDieGameCron).singleton().proxy(),
+            processBetQueue: asClass(VipSeDieProcessBetQueue).singleton().proxy(),
         });
     }
 }
