@@ -1,7 +1,7 @@
 import appConfigs from "./app-configs";
 import gameSettings from "./game-settings";
 import { startTrace } from "sc-instrument";
-import { registerViewModule } from "sc-game-base-view-module";
+import { registerViewModule } from "./register-view-module";
 import GameData from "./game-data";
 
 startTrace(appConfigs.otel?.enabled, appConfigs.otel?.endpoint, appConfigs.otel?.system, appConfigs.sentry.env, gameSettings.name);
