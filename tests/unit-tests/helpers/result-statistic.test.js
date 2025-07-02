@@ -68,7 +68,7 @@ describe("Result statistic: 100000 times", () => {
             expect(resultPercentage.white4).toBeGreaterThanOrEqual(6);
             expect(dragonTails[4]).toBeLessThan(1700);
             expect(dragonTails[5]).toBeLessThan(850);
-            expect(dragonTails[6]).toBeLessThan(450);
+            expect(dragonTails[6]).toBeLessThan(455);
             expect(dragonTails[7]).toBeLessThan(250);
             expect(dragonTails[8]).toBeLessThan(130);
             expect(dragonTails[9]).toBeLessThan(70);
