@@ -2,8 +2,8 @@ export default {
     hostingPort: 5000,
     apiSettings: {
         enabledApi: true,
-        apiUrl: "http://sp_hd_game_api_sit:5000",
-        authUrl: "http://sp_hd_auth_api_sit:5000",
+        apiUrl: "http://sp-hd-game-api-sit-service:5000",
+        authUrl: "http://sp-hd-auth-api-sit-service:5000",
         client: {
             id: "game-server",
             secret: "gameserver@20luminet&",
@@ -14,7 +14,7 @@ export default {
         enabledApiLogs: true,
     },
     authenticateSettings: {
-        url: "http://sp_hd_auth_api_sit:5000",
+        url: "http://sp-hd-auth-api-sit-service:5000",
         id: "game-services",
         secret: "gameservices@20luminet&",
         requestTimeout: 10000,
@@ -22,7 +22,7 @@ export default {
         audiences: ["api", "admin-api"],
     },
     userServiceSettings: {
-        url: "http://sp_hd_user_service_sit:5000",
+        url: "http://sp-hd-user-service-sit-service:5000",
     },
     socketOptions: {
         pingInterval: 60 * 1000,
