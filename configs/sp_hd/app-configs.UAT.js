@@ -42,7 +42,7 @@ export default {
         },
     },
     sentry: {
-        sentryUrl: "https://f4980024f65945179a125e7ce17286d0@sentry-ovs.sgamesuat.com/178",
+        sentryUrl: "http://f4980024f65945179a125e7ce17286d0@sentrysc-ovs.ops-kluat.gamora.prod/178",
         logIdentifier: "HD-VipSeDie",
         env: "UAT",
     },
